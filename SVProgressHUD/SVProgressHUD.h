@@ -53,8 +53,12 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (assign, nonatomic) CGFloat ringNoTextRadius UI_APPEARANCE_SELECTOR;              // default is 24 pt
 @property (assign, nonatomic) CGFloat cornerRadius UI_APPEARANCE_SELECTOR;                  // default is 14 pt
 @property (strong, nonatomic, nonnull) UIFont *font UI_APPEARANCE_SELECTOR;                 // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
+//edit
+@property (strong, nonatomic, nonnull) UIFont *subFont UI_APPEARANCE_SELECTOR;              // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
 @property (strong, nonatomic, nonnull) UIColor *backgroundColor UI_APPEARANCE_SELECTOR;     // default is [UIColor whiteColor]
 @property (strong, nonatomic, nonnull) UIColor *foregroundColor UI_APPEARANCE_SELECTOR;     // default is [UIColor blackColor]
+@property (strong, nonatomic, nonnull) UIColor *subForegroundColor UI_APPEARANCE_SELECTOR;  // default is [UIColor blackColor]
+
 @property (strong, nonatomic, nonnull) UIColor *backgroundLayerColor UI_APPEARANCE_SELECTOR;// default is [UIColor colorWithWhite:0 alpha:0.4]
 @property (assign, nonatomic) CGSize imageViewSize UI_APPEARANCE_SELECTOR;                  // default is 28x28 pt
 @property (assign, nonatomic) BOOL shouldTintImages UI_APPEARANCE_SELECTOR;                 // default is YES
@@ -87,7 +91,9 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setBorderColor:(nonnull UIColor*)color;                     // default is nil
 + (void)setBorderWidth:(CGFloat)width;                              // default is 0
 + (void)setFont:(nonnull UIFont*)font;                              // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
++ (void)setSubFont:(nonnull UIFont *)subFont;                       // default is [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline]
 + (void)setForegroundColor:(nonnull UIColor*)color;                 // default is [UIColor blackColor], only used for SVProgressHUDStyleCustom
++ (void)setSubForegroundColor:(nonnull UIColor*)color;              // default is [UIColor blackColor], only used for SVProgressHUDStyleCustom
 + (void)setBackgroundColor:(nonnull UIColor*)color;                 // default is [UIColor whiteColor], only used for SVProgressHUDStyleCustom
 + (void)setBackgroundLayerColor:(nonnull UIColor*)color;            // default is [UIColor colorWithWhite:0 alpha:0.5], only used for SVProgressHUDMaskTypeCustom
 + (void)setImageViewSize:(CGSize)size;                              // default is 28x28 pt
@@ -110,25 +116,37 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)showWithMaskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use show and setDefaultMaskType: instead.")));
 + (void)showWithStatus:(nullable NSString*)status;
 + (void)showWithStatus:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showWithStatus: and setDefaultMaskType: instead.")));
++ (void)showWithStatus:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;;
 
 + (void)showProgress:(float)progress;
 + (void)showProgress:(float)progress maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showProgress: and setDefaultMaskType: instead.")));
 + (void)showProgress:(float)progress status:(nullable NSString*)status;
 + (void)showProgress:(float)progress status:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showProgress:status: and setDefaultMaskType: instead.")));
++ (void)showProgress:(float)progress status:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;
 
 + (void)setStatus:(nullable NSString*)status; // change the HUD loading status while it's showing
-
++ (void)setSubStatus:(nullable NSString*)subStatus; // change the HUD loading sub status while it's showing
 // stops the activity indicator, shows a glyph + status, and dismisses the HUD a little bit later
 + (void)showInfoWithStatus:(nullable NSString*)status;
 + (void)showInfoWithStatus:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showInfoWithStatus: and setDefaultMaskType: instead.")));
++ (void)showInfoWithStatus:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;
+
 + (void)showSuccessWithStatus:(nullable NSString*)status;
 + (void)showSuccessWithStatus:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showSuccessWithStatus: and setDefaultMaskType: instead.")));
++ (void)showSuccessWithStatus:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;
+
+
 + (void)showErrorWithStatus:(nullable NSString*)status;
 + (void)showErrorWithStatus:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showErrorWithStatus: and setDefaultMaskType: instead.")));
+
++ (void)showErrorWithStatus:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;
+
 
 // shows a image + status, use white PNGs with the imageViewSize (default is 28x28 pt)
 + (void)showImage:(nonnull UIImage*)image status:(nullable NSString*)status;
 + (void)showImage:(nonnull UIImage*)image status:(nullable NSString*)status maskType:(SVProgressHUDMaskType)maskType __attribute__((deprecated("Use showImage:status: and setDefaultMaskType: instead.")));
+
++ (void)showImage:(nonnull UIImage*)image status:(nullable NSString*)status subStatus:(nullable NSString *)subStatus;
 
 + (void)setOffsetFromCenter:(UIOffset)offset;
 + (void)resetOffsetFromCenter;

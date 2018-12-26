@@ -23,6 +23,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.activityCount = 0;
+    [SVProgressHUD setSubFont:[UIFont systemFontOfSize:12]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,14 +86,14 @@ static float progress = 0.0f;
 
 - (IBAction)showWithProgress:(id)sender {
     progress = 0.0f;
-    [SVProgressHUD showProgress:0 status:@"Loading"];
+    [SVProgressHUD showProgress:0 status:@"Loading" subStatus:@"违法及沃尔夫今儿我房间额外附件围殴if加尔文覅偶耳温计覅we附件为偶发金额为穷疯"];
     [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.1f];
     self.activityCount++;
 }
 
 - (void)increaseProgress {
     progress += 0.05f;
-    [SVProgressHUD showProgress:progress status:@"Loading"];
+    [SVProgressHUD showProgress:progress status:@"Loading" subStatus:@"违法及沃尔夫今儿我房间额外附件围殴if加尔文覅偶耳温计覅we附件为偶发金额为穷疯"];
 
     if(progress < 1.0f){
         [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.1f];
@@ -127,7 +128,7 @@ static float progress = 0.0f;
 }
 
 - (void)showSuccessWithStatus {
-	[SVProgressHUD showSuccessWithStatus:@"Great Success!"];
+	[SVProgressHUD showSuccessWithStatus:@"Great Success!" subStatus:@"违法及沃尔夫今儿我房间额外附件围殴if加尔文覅偶耳温计覅we附件为偶发金额为穷疯"];
     self.activityCount++;
 }
 
