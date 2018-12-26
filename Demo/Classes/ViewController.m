@@ -23,7 +23,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.activityCount = 0;
+    [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD setSubFont:[UIFont systemFontOfSize:12]];
+    [SVProgressHUD setHapticsEnabled:YES];
+//    [SVProgressHUD setSuccessImage:[UIImage imageWithGIFNamed:@"icon_feedback_wait_48x48"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -128,7 +131,7 @@ static float progress = 0.0f;
 }
 
 - (void)showSuccessWithStatus {
-	[SVProgressHUD showSuccessWithStatus:@"Great Success!" subStatus:@"违法及沃尔夫今儿我房间额外附件围殴if加尔文覅偶耳温计覅we附件为偶发金额为穷疯"];
+    [SVProgressHUD showWithStatus:@"读取中??" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
     self.activityCount++;
 }
 

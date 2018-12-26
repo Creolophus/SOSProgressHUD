@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B0C471821D37FAE00906A2D /* UIImage+GIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B0C471721D37FAE00906A2D /* UIImage+GIFImage.m */; };
+		1B0C471B21D3814C00906A2D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B0C471A21D3814C00906A2D /* ImageIO.framework */; };
+		1B0C472021D381AE00906A2D /* icon_feedback_wait_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471C21D381AB00906A2D /* icon_feedback_wait_48x48.gif */; };
+		1B0C472121D381AE00906A2D /* icon_feedback_wait_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471C21D381AB00906A2D /* icon_feedback_wait_48x48.gif */; };
+		1B0C472221D381AE00906A2D /* icon_feedback_fail_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471D21D381AB00906A2D /* icon_feedback_fail_48x48.gif */; };
+		1B0C472321D381AE00906A2D /* icon_feedback_fail_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471D21D381AB00906A2D /* icon_feedback_fail_48x48.gif */; };
+		1B0C472421D381AE00906A2D /* icon_feedback_success_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471E21D381AC00906A2D /* icon_feedback_success_48x48.gif */; };
+		1B0C472521D381AE00906A2D /* icon_feedback_success_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471E21D381AC00906A2D /* icon_feedback_success_48x48.gif */; };
+		1B0C472621D381AE00906A2D /* icon_feedback_attention_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471F21D381AD00906A2D /* icon_feedback_attention_48x48.gif */; };
+		1B0C472721D381AE00906A2D /* icon_feedback_attention_48x48.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1B0C471F21D381AD00906A2D /* icon_feedback_attention_48x48.gif */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -35,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B0C471621D37FAD00906A2D /* UIImage+GIFImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIFImage.h"; sourceTree = "<group>"; };
+		1B0C471721D37FAE00906A2D /* UIImage+GIFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GIFImage.m"; sourceTree = "<group>"; };
+		1B0C471A21D3814C00906A2D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		1B0C471C21D381AB00906A2D /* icon_feedback_wait_48x48.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_feedback_wait_48x48.gif; sourceTree = "<group>"; };
+		1B0C471D21D381AB00906A2D /* icon_feedback_fail_48x48.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_feedback_fail_48x48.gif; sourceTree = "<group>"; };
+		1B0C471E21D381AC00906A2D /* icon_feedback_success_48x48.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_feedback_success_48x48.gif; sourceTree = "<group>"; };
+		1B0C471F21D381AD00906A2D /* icon_feedback_attention_48x48.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_feedback_attention_48x48.gif; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -73,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0C471B21D3814C00906A2D /* ImageIO.framework in Frameworks */,
 				3FF0384716633A330070E901 /* QuartzCore.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -96,6 +114,12 @@
 				63ADC4B81364C1360060E45B /* SVProgressHUD */,
 				28D7ACF60DDB3853001CB0EB /* ViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* ViewController.m */,
+				1B0C471621D37FAD00906A2D /* UIImage+GIFImage.h */,
+				1B0C471721D37FAE00906A2D /* UIImage+GIFImage.m */,
+				1B0C471F21D381AD00906A2D /* icon_feedback_attention_48x48.gif */,
+				1B0C471D21D381AB00906A2D /* icon_feedback_fail_48x48.gif */,
+				1B0C471E21D381AC00906A2D /* icon_feedback_success_48x48.gif */,
+				1B0C471C21D381AB00906A2D /* icon_feedback_wait_48x48.gif */,
 				3C0DE68E1F6096230062BA4A /* LaunchScreen.storyboard */,
 				3C0DE6901F6096230062BA4A /* Main.storyboard */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
@@ -142,6 +166,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1B0C471A21D3814C00906A2D /* ImageIO.framework */,
 				3FF0384616633A330070E901 /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -232,6 +257,9 @@
 			attributes = {
 				LastUpgradeCheck = 0920;
 				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = ZVA2DUKP4L;
+					};
 					D36EDBCD1BE7E9B000BD0EF1 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -265,9 +293,13 @@
 			files = (
 				3C0DE6921F6096230062BA4A /* LaunchScreen.storyboard in Resources */,
 				22D13AB71365FEAC0025FCC9 /* SVProgressHUD.bundle in Resources */,
+				1B0C472621D381AE00906A2D /* icon_feedback_attention_48x48.gif in Resources */,
+				1B0C472021D381AE00906A2D /* icon_feedback_wait_48x48.gif in Resources */,
 				2265DEEE14706A8900B3EBF7 /* README.md in Resources */,
 				3C0DE6931F6096230062BA4A /* Main.storyboard in Resources */,
+				1B0C472221D381AE00906A2D /* icon_feedback_fail_48x48.gif in Resources */,
 				22B9D43816B92E4D00E71652 /* SVProgressHUD.podspec in Resources */,
+				1B0C472421D381AE00906A2D /* icon_feedback_success_48x48.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +309,10 @@
 			files = (
 				D396A6611BE7F6BF00E6E1BF /* SVProgressHUD.bundle in Resources */,
 				D36EDBDB1BE7E9B100BD0EF1 /* Main.storyboard in Resources */,
+				1B0C472721D381AE00906A2D /* icon_feedback_attention_48x48.gif in Resources */,
+				1B0C472521D381AE00906A2D /* icon_feedback_success_48x48.gif in Resources */,
+				1B0C472121D381AE00906A2D /* icon_feedback_wait_48x48.gif in Resources */,
+				1B0C472321D381AE00906A2D /* icon_feedback_fail_48x48.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +325,7 @@
 			files = (
 				B07118291A3264C900C8A614 /* SVIndefiniteAnimatedView.m in Sources */,
 				3CD078EA1A3B809500290D80 /* SVRadialGradientLayer.m in Sources */,
+				1B0C471821D37FAE00906A2D /* UIImage+GIFImage.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* ViewController.m in Sources */,
@@ -345,13 +382,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				DEVELOPMENT_TEAM = ZVA2DUKP4L;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SVProgressHUD_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVProgressHUD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onstar.SVProgressHUD;
 				PRODUCT_NAME = SVProgressHUD;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,13 +400,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				DEVELOPMENT_TEAM = ZVA2DUKP4L;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SVProgressHUD_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "SVProgressHUD-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.onstar.SVProgressHUD;
 				PRODUCT_NAME = SVProgressHUD;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
