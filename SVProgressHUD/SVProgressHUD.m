@@ -1077,10 +1077,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
                     // Clean up view hierarchy (overlays)
                     self.imageView.image = nil;
                     self.imageView.animationImages = nil;
-                    if ([_indefiniteAnimatedView isKindOfClass:UIImageView.class]) {
-                        UIImageView *indefiniteAnimatedView = (UIImageView *)_indefiniteAnimatedView;
-                        indefiniteAnimatedView.image = nil;
-                    }
+//                    if ([_indefiniteAnimatedView isKindOfClass:UIImageView.class]) {
+//                        UIImageView *indefiniteAnimatedView = (UIImageView *)_indefiniteAnimatedView;
+//                        indefiniteAnimatedView.image = nil;
+//                    }
                     [strongSelf.controlView removeFromSuperview];
                     [strongSelf.backgroundView removeFromSuperview];
                     [strongSelf.hudView removeFromSuperview];
