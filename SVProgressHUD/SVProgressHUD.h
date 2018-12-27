@@ -33,7 +33,8 @@ typedef NS_ENUM(NSUInteger, SVProgressHUDMaskType) {
 
 typedef NS_ENUM(NSUInteger, SVProgressHUDAnimationType) {
     SVProgressHUDAnimationTypeFlat NS_SWIFT_NAME(flat),     // default animation type, custom flat animation (indefinite animated ring)
-    SVProgressHUDAnimationTypeNative NS_SWIFT_NAME(native)   // iOS native UIActivityIndicatorView
+    SVProgressHUDAnimationTypeNative NS_SWIFT_NAME(native),   // iOS native UIActivityIndicatorView
+    SVProgressHUDAnimationTypeGIF NS_SWIFT_NAME(gif)        //gif
 };
 
 typedef void (^SVProgressHUDShowCompletion)(void);
@@ -65,6 +66,8 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 @property (strong, nonatomic, nonnull) UIImage *infoImage UI_APPEARANCE_SELECTOR;           // default is the bundled info image provided by Freepik
 @property (strong, nonatomic, nonnull) UIImage *successImage UI_APPEARANCE_SELECTOR;        // default is the bundled success image provided by Freepik
 @property (strong, nonatomic, nonnull) UIImage *errorImage UI_APPEARANCE_SELECTOR;          // default is the bundled error image provided by Freepik
+@property (strong, nonatomic, nonnull) UIImage *loadingImage UI_APPEARANCE_SELECTOR;        // default is nil, only used if SVProgressHUDAnimationTypeGIF
+
 @property (strong, nonatomic, nonnull) UIView *viewForExtension UI_APPEARANCE_SELECTOR;     // default is nil, only used if #define SV_APP_EXTENSIONS is set
 @property (assign, nonatomic) NSTimeInterval graceTimeInterval;                             // default is 0 seconds
 @property (assign, nonatomic) NSTimeInterval minimumDismissTimeInterval;                    // default is 5.0 seconds
@@ -101,6 +104,7 @@ typedef void (^SVProgressHUDDismissCompletion)(void);
 + (void)setInfoImage:(nonnull UIImage*)image;                       // default is the bundled info image provided by Freepik
 + (void)setSuccessImage:(nonnull UIImage*)image;                    // default is the bundled success image provided by Freepik
 + (void)setErrorImage:(nonnull UIImage*)image;                      // default is the bundled error image provided by Freepik
++ (void)setLoadingImage:(nonnull UIImage*)image;                      // default is nil, only used if SVProgressHUDAnimationTypeGIF
 + (void)setViewForExtension:(nonnull UIView*)view;                  // default is nil, only used if #define SV_APP_EXTENSIONS is set
 + (void)setGraceTimeInterval:(NSTimeInterval)interval;              // default is 0 seconds
 + (void)setMinimumDismissTimeInterval:(NSTimeInterval)interval;     // default is 5.0 seconds

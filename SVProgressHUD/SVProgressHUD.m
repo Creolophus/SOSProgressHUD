@@ -178,6 +178,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     [self sharedView].errorImage = image;
 }
 
++ (void)setLoadingImage:(UIImage *)image {
+    [self sharedView].loadingImage = image;
+}
+
 + (void)setViewForExtension:(UIView*)view {
     [self sharedView].viewForExtension = view;
 }
@@ -905,13 +909,21 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
             [strongSelf cancelIndefiniteAnimatedViewAnimation];
             
             // Update imageView
-            if (self.shouldTintImages) {
-                if (image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
-                    strongSelf.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            if (image.images.count > 1) {
+                strongSelf.imageView.image = image.images.lastObject;
+                strongSelf.imageView.animationImages = image.images;
+                strongSelf.imageView.animationDuration = image.duration;
+                strongSelf.imageView.animationRepeatCount = 1;
+                [strongSelf.imageView startAnimating];
+            }else {
+                if (self.shouldTintImages) {
+                    if (image.renderingMode != UIImageRenderingModeAlwaysTemplate) {
+                        strongSelf.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                    }
+                    strongSelf.imageView.tintColor = strongSelf.foregroundColorForStyle;
+                } else {
+                    strongSelf.imageView.image = image;
                 }
-                strongSelf.imageView.tintColor = strongSelf.foregroundColorForStyle;
-            } else {
-                strongSelf.imageView.image = image;
             }
             strongSelf.imageView.hidden = NO;
             
@@ -1063,6 +1075,12 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
                 // and the change of these values has not been cancelled in between e.g. due to a new show
                 if(self.backgroundView.alpha == 0.0f){
                     // Clean up view hierarchy (overlays)
+                    self.imageView.image = nil;
+                    self.imageView.animationImages = nil;
+                    if ([_indefiniteAnimatedView isKindOfClass:UIImageView.class]) {
+                        UIImageView *indefiniteAnimatedView = (UIImageView *)_indefiniteAnimatedView;
+                        indefiniteAnimatedView.image = nil;
+                    }
                     [strongSelf.controlView removeFromSuperview];
                     [strongSelf.backgroundView removeFromSuperview];
                     [strongSelf.hudView removeFromSuperview];
@@ -1144,8 +1162,9 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         indefiniteAnimatedView.strokeColor = self.foregroundColorForStyle;
         indefiniteAnimatedView.strokeThickness = self.ringThickness;
         indefiniteAnimatedView.radius = self.statusLabel.text ? self.ringRadius : self.ringNoTextRadius;
-    } else {
-        // Check if spinner exists and is an object of different class
+        [_indefiniteAnimatedView sizeToFit];
+    }else if (self.defaultAnimationType == SVProgressHUDAnimationTypeNative) {
+//         Check if spinner exists and is an object of different class
         if(_indefiniteAnimatedView && ![_indefiniteAnimatedView isKindOfClass:[UIActivityIndicatorView class]]){
             [_indefiniteAnimatedView removeFromSuperview];
             _indefiniteAnimatedView = nil;
@@ -1158,8 +1177,21 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
         // Update styling
         UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView*)_indefiniteAnimatedView;
         activityIndicatorView.color = self.foregroundColorForStyle;
+        [_indefiniteAnimatedView sizeToFit];
     }
-    [_indefiniteAnimatedView sizeToFit];
+    else {
+        if(_indefiniteAnimatedView && ![_indefiniteAnimatedView isKindOfClass:[UIImageView class]]){
+            [_indefiniteAnimatedView removeFromSuperview];
+            _indefiniteAnimatedView = nil;
+        }
+        if (!_indefiniteAnimatedView) {
+            _indefiniteAnimatedView = [UIImageView new];
+            _indefiniteAnimatedView.bounds = CGRectMake(0, 0, _imageViewSize.width, _imageViewSize.height);
+        }
+        UIImageView *indefiniteAnimatedView = (UIImageView *)_indefiniteAnimatedView;
+        indefiniteAnimatedView.image = self.loadingImage;
+    }
+    
     
     return _indefiniteAnimatedView;
 }
@@ -1586,6 +1618,10 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 
 - (void)setErrorImage:(UIImage*)image {
     if (!_isInitializing) _errorImage = image;
+}
+
+- (void)setLoadingImage:(UIImage *)image {
+    if (!_isInitializing) _loadingImage = image;
 }
 
 - (void)setViewForExtension:(UIView*)view {

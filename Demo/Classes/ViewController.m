@@ -24,12 +24,18 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     self.activityCount = 0;
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD setSubFont:[UIFont systemFontOfSize:12]];
     [SVProgressHUD setHapticsEnabled:YES];
     [SVProgressHUD setMinimumSize:CGSizeMake(110, 0)];
     [SVProgressHUD setImageViewSize:CGSizeMake(48, 48)];
     [SVProgressHUD setSuccessImage:[UIImage imageWithGIFNamed:@"icon_feedback_success_48x48"]];
+    [SVProgressHUD setInfoImage:[UIImage imageWithGIFNamed:@"icon_feedback_attention_48x48"]];
+    [SVProgressHUD setErrorImage:[UIImage imageWithGIFNamed:@"icon_feedback_fail_48x48"]];
+    [SVProgressHUD setLoadingImage:[UIImage imageWithGIFNamed:@"icon_feedback_wait_48x48"]];
+    [SVProgressHUD setMaximumDismissTimeInterval:2];
+    [SVProgressHUD setMinimumDismissTimeInterval:2];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -135,7 +141,6 @@ static float progress = 0.0f;
 
 - (void)showSuccessWithStatus {
     [SVProgressHUD showSuccessWithStatus:@"成功" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
-//    [SVProgressHUD showWithStatus:@"读取中??" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
     self.activityCount++;
 }
 
@@ -160,8 +165,10 @@ static float progress = 0.0f;
     UISegmentedControl *segmentedControl = (UISegmentedControl*)sender;
     if(segmentedControl.selectedSegmentIndex == 0){
         [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeFlat];
-    } else {
+    } else if (segmentedControl.selectedSegmentIndex == 1) {
         [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeNative];
+    }else {
+        [SVProgressHUD setDefaultAnimationType:SVProgressHUDAnimationTypeGIF];
     }
 }
 
