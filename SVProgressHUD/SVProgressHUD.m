@@ -27,7 +27,7 @@ static const CGFloat SVProgressHUDParallaxDepthPoints = 10.0f;
 static const CGFloat SVProgressHUDUndefinedProgress = -1;
 static const CGFloat SVProgressHUDDefaultAnimationDuration = 0.15f;
 static const CGFloat SVProgressHUDVerticalSpacing = 12.0f;
-static const CGFloat SVProgressHUDHorizontalSpacing = 12.0f;
+static const CGFloat SVProgressHUDHorizontalSpacing = 14.0f;
 static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 
 
@@ -481,7 +481,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     CGFloat labelWidth = 0.0f;
     
     if(self.statusLabel.text) {
-        CGSize constraintSize = CGSizeMake(200.0f, 300.0f);
+        CGSize constraintSize = CGSizeMake(132.0f, 300.0f);
         labelRect = [self.statusLabel.text boundingRectWithSize:constraintSize
                                                         options:(NSStringDrawingOptions)(NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin)
                                                      attributes:@{NSFontAttributeName: self.statusLabel.font}
@@ -494,7 +494,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     CGFloat subLabelHeight = 0.0f;
     CGFloat subLabelWidth = 0.0f;
     if (self.subStatusLabel.text) {
-        CGSize constraintSize = CGSizeMake(200.0f, 300.0f);
+        CGSize constraintSize = CGSizeMake(132.0f, 300.0f);
         subLabelRect = [self.subStatusLabel.text boundingRectWithSize:constraintSize
                                                         options:(NSStringDrawingOptions)(NSStringDrawingUsesFontLeading | NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin)
                                                      attributes:@{NSFontAttributeName: self.subStatusLabel.font}
@@ -521,15 +521,19 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     // |-spacing-content-spacing-|
     hudWidth = SVProgressHUDHorizontalSpacing + MAX(MAX(subLabelWidth, labelWidth), contentWidth) + SVProgressHUDHorizontalSpacing;
     
-    // |-spacing-content-(labelSpacing-label-)spacing-(subLabelSpacing-label-)spacing-|
-    hudHeight = SVProgressHUDVerticalSpacing + labelHeight + contentHeight + SVProgressHUDVerticalSpacing + subLabelHeight + (subLabelHeight > 0 ? SVProgressHUDVerticalSpacing : 0);
+    // |-spacing-content-(labelSpacing-label-)spacing-(subLabelSpacing-label-spacing-)|
+    hudHeight = 18 + labelHeight + contentHeight + SVProgressHUDVerticalSpacing + subLabelHeight + (subLabelHeight > 0 ? SVProgressHUDVerticalSpacing + 2 : 0);
     if(self.statusLabel.text && (imageUsed || progressUsed)){
         // Add spacing if both content and label are used
         hudHeight += SVProgressHUDLabelSpacing;
     }
     
     // Update values on subviews
-    self.hudView.bounds = CGRectMake(0.0f, 0.0f, MAX(self.minimumSize.width, hudWidth), MAX(self.minimumSize.height, hudHeight));
+    if (self.statusLabel.text.length <= 0 && self.subStatusLabel.text.length <= 0) {
+        self.hudView.bounds = CGRectMake(0, 0, 80, 80);
+    }else {
+        self.hudView.bounds = CGRectMake(0.0f, 0.0f, MAX(self.minimumSize.width, hudWidth), MAX(self.minimumSize.height, hudHeight));
+    }
     
     // Animate value update
     [CATransaction begin];
@@ -1452,15 +1456,15 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
 - (void)fadeInEffects {
     if(self.defaultStyle != SVProgressHUDStyleCustom) {
         // Add blur effect
-        UIBlurEffectStyle blurEffectStyle = self.defaultStyle == SVProgressHUDStyleDark ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
-        self.hudView.effect = blurEffect;
+//        UIBlurEffectStyle blurEffectStyle = self.defaultStyle == SVProgressHUDStyleDark ? UIBlurEffectStyleDark : UIBlurEffectStyleLight;
+//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:blurEffectStyle];
+//        self.hudView.effect = blurEffect;
         
         // We omit UIVibrancy effect and use a suitable background color as an alternative.
         // This will make everything more readable. See the following for details:
         // https://www.omnigroup.com/developer/how-to-make-text-in-a-uivisualeffectview-readable-on-any-background
         
-        self.hudView.backgroundColor = [self.backgroundColorForStyle colorWithAlphaComponent:0.6f];
+        self.hudView.backgroundColor = [self.backgroundColorForStyle colorWithAlphaComponent:0.65f];
     } else {
         self.hudView.backgroundColor =  self.backgroundColorForStyle;
     }
@@ -1470,6 +1474,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     
     self.imageView.alpha = 1.0f;
     self.statusLabel.alpha = 1.0f;
+    self.subStatusLabel.alpha = 1.0f;
     self.indefiniteAnimatedView.alpha = 1.0f;
     self.ringView.alpha = self.backgroundRingView.alpha = 1.0f;
 }
@@ -1489,6 +1494,7 @@ static const CGFloat SVProgressHUDLabelSpacing = 8.0f;
     
     self.imageView.alpha = 0.0f;
     self.statusLabel.alpha = 0.0f;
+    self.subStatusLabel.alpha = 0.0f;
     self.indefiniteAnimatedView.alpha = 0.0f;
     self.ringView.alpha = self.backgroundRingView.alpha = 0.0f;
 }

@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "SVProgressHUD.h"
+#import "UIImage+GIFImage.h"
 
 @interface ViewController()
 
@@ -26,7 +27,9 @@
     [SVProgressHUD setFont:[UIFont systemFontOfSize:14]];
     [SVProgressHUD setSubFont:[UIFont systemFontOfSize:12]];
     [SVProgressHUD setHapticsEnabled:YES];
-//    [SVProgressHUD setSuccessImage:[UIImage imageWithGIFNamed:@"icon_feedback_wait_48x48"]];
+    [SVProgressHUD setMinimumSize:CGSizeMake(110, 0)];
+    [SVProgressHUD setImageViewSize:CGSizeMake(48, 48)];
+    [SVProgressHUD setSuccessImage:[UIImage imageWithGIFNamed:@"icon_feedback_success_48x48"]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,7 +134,8 @@ static float progress = 0.0f;
 }
 
 - (void)showSuccessWithStatus {
-    [SVProgressHUD showWithStatus:@"读取中??" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
+    [SVProgressHUD showSuccessWithStatus:@"成功" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
+//    [SVProgressHUD showWithStatus:@"读取中??" subStatus:@"sub读取中读取中读取中读取中读取中读取中读取中读取中"];
     self.activityCount++;
 }
 
